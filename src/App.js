@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 
 let initialFriends = [
   {
@@ -28,6 +28,14 @@ export default function App() {
 
   function handleShowAddFriend() {
     setShowAddFriend((showAddFriend) => !showAddFriend);
+    setSelectedFriend(null);
+  }
+
+  function handleDelete() {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete all friends?"
+    );
+    if (confirmed) setFriends([]);
   }
 
   function handleAddFriend(friend) {
@@ -52,27 +60,32 @@ export default function App() {
     setSelectedFriend(null);
   }
   return (
-    <div className="app">
-      <div className="sidebar">
-        <FriendsList
-          friends={friends}
-          onSelection={handleSelection}
-          selectedFriend={selectedFriend}
-        />
+    <>
+      <h1>Fair Fork</h1>
+      <div className="app">
+        <div className="sidebar">
+          <FriendsList
+            friends={friends}
+            onSelection={handleSelection}
+            selectedFriend={selectedFriend}
+          />
 
-        {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
-
-        <Button onClick={handleShowAddFriend}>
-          {showAddFriend ? "Close" : "Add friend"}
-        </Button>
+          {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
+          <Button onClick={handleShowAddFriend}>
+            {showAddFriend ? "Close" : "Add friend"}
+          </Button>
+          <button className="button button-delete" onClick={handleDelete}>
+            Delete all
+          </button>
+        </div>
+        {selectedFriend && (
+          <FormSplitBill
+            selectedFriend={selectedFriend}
+            onSplitBill={handleSplitBill}
+          />
+        )}
       </div>
-      {selectedFriend && (
-        <FormSplitBill
-          selectedFriend={selectedFriend}
-          onSplitBill={handleSplitBill}
-        />
-      )}
-    </div>
+    </>
   );
 }
 
@@ -107,7 +120,11 @@ function Friend({ friend, onSelection, selectedFriend }) {
           {friend.name} owes you ${Math.abs(friend.balance)}
         </p>
       )}
-      {friend.balance === 0 && <p>You and {friend.name} are even</p>}
+      {friend.balance === 0 && (
+        <p>
+          You and <strong>{friend.name}</strong> are even!
+        </p>
+      )}
       <Button onClick={() => onSelection(friend)}>
         {isSelected ? "Close" : "Select"}
       </Button>

@@ -25,11 +25,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    180deg,
-    var(--color-gradient-start),
-    var(--color-gradient-end)
-  );
+  background-color: #f4fce3;
   background-size: cover;
   background-attachment: fixed;
   animation: gradientAnimation 10s ease infinite;

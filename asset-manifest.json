@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/fair-fork/static/css/main.32975e56.css",
-    "main.js": "/fair-fork/static/js/main.f09e1c98.js",
+    "main.css": "/fair-fork/static/css/main.90bf38f5.css",
+    "main.js": "/fair-fork/static/js/main.4f4a530d.js",
     "index.html": "/fair-fork/index.html",
-    "main.32975e56.css.map": "/fair-fork/static/css/main.32975e56.css.map",
-    "main.f09e1c98.js.map": "/fair-fork/static/js/main.f09e1c98.js.map"
+    "main.90bf38f5.css.map": "/fair-fork/static/css/main.90bf38f5.css.map",
+    "main.4f4a530d.js.map": "/fair-fork/static/js/main.4f4a530d.js.map"
   },
   "entrypoints": [
-    "static/css/main.32975e56.css",
-    "static/js/main.f09e1c98.js"
+    "static/css/main.90bf38f5.css",
+    "static/js/main.4f4a530d.js"
   ]
 }
